@@ -28,6 +28,10 @@ namespace BookAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddControllers().AddJsonOptions(options =>
+//             {
+//                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
+//             });
             //services.AddDbContext<BookContext>(o => o.UseSqlite("Data Source=books.db"));
             services.AddDbContext<BookContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
